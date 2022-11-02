@@ -82,7 +82,7 @@ def buscar(request):
         return render(request, 'resultadoBusqueda.html', {'juegos': juegos, 'nombre':nombre})
     
     else:
-        respuesta = "El juego no existe"
+        respuesta = "No cargaste ningún juego"
         
         return HttpResponse(respuesta)
         
