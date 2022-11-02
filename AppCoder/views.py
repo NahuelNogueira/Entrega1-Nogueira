@@ -73,8 +73,17 @@ def busqueda_juego(request):
 
 def buscar(request):
     
-    busqueda = request.GET['nombre']
+    if request.GET['juego']:
     
-    juego = Juego.objects.get(nombre = busqueda)
+        nombre = request.GET['juego']
+        
+        juegos = Juego.objects.filter(nombre__icontains=nombre)
+        
+        return render(request, 'resultadoBusqueda.html', {'juegos': juegos, 'nombre':nombre})
     
-    return render(request, 'resultadoBusqueda.html', {'juego':juego})
+    else:
+        respuesta = "El juego no existe"
+        
+        return HttpResponse(respuesta)
+        
+    

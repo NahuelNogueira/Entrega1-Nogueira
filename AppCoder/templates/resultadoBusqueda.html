@@ -4,9 +4,25 @@
 
 {% block ContenidoNuevo %}
 
-    <p>Estamos buscando el juego:</p>
-
-    <h4>Nombre: {{juego.nombre}}</h4>
-    <h4>Genero: {{juego.genero}}</h4>
-
+<section class="about-section text-center" id="about">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-lg-8">
+                
+                {% if juegos %}
+                    
+                <h2 class="text-white mb-4">El juego que buscaste es:</h2>
+                <ul>
+                    {% for juego in juegos %}
+                        <h4 class="text-white-50">Nombre: {{ juego.nombre }}</h4>
+                        <h4 class="text-white-50">Genero: {{ juego.genero }}</h4>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                    <h3 class="text-white-50">No existe el juego buscado</h3>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}
